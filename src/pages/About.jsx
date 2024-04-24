@@ -1,4 +1,5 @@
 import HeroAboutImage from '../../src/assets/images/about-hero.png';
+import {Link} from 'react-router-dom'
 const About = () => {
 	return (
 		<main>
@@ -22,9 +23,9 @@ const About = () => {
 			</div>
 			<div className='about-page-cta'>
 				<h2>Your destination is waiting. Your van is ready</h2>
-				<a href='#' className='link-button'>
-					Explore Vans
-				</a>
+				<Link to='/vans' className='link-button'>
+					Explore our vans
+				</Link>
 			</div>
 		</main>
 	);
