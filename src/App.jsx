@@ -1,27 +1,25 @@
 import { Routes, Route, Link } from 'react-router-dom';
-
-const Home = () => {
-	return <h1>Home page</h1>;
-};
-
-const About = () => {
-	return <h1>About page</h1>;
-};
-const Products = () => {
-	return <h1>Product page</h1>;
-};
+import Home from './pages/Home';
+import About from './pages/About';
 
 const App = () => {
 	return (
 		<>
-			<Link to='/'>Home</Link>
-			<Link to='/about'>About</Link>
-			<Link to='/products'>Products</Link>
+			<header>
+				<Link to='/' className='site-logo'>
+					#Vanlife
+				</Link>
+				<nav>
+					<Link to='/'>Home</Link>
+					<Link to='/about'>About</Link>
+				</nav>
+			</header>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/about' element={<About />} />
-				<Route path='/products' element={<Products />} />
 			</Routes>
+
+			<footer>&copy; {new Date().getFullYear()} #VanLife</footer>
 		</>
 	);
 };
