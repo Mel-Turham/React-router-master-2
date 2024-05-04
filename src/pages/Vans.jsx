@@ -7,7 +7,7 @@ const Vans = () => {
 	useEffect(() => {
 		const fetchVans = async () => {
 			try {
-				const req = await axios('http://localhost:8000/vans');
+				const req = await axios('/api/vans');
 				const res = req.data;
 				setVans(res);
 			} catch (error) {
