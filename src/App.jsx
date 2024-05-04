@@ -21,8 +21,6 @@ const App = () => {
 				<Route path='/about' element={<About />} />
 				<Route path='/vans' element={<Vans />} />
 			</Routes>
-
-			<footer>&copy; {new Date().getFullYear()} #VanLife</footer>
 		</>
 	);
 };

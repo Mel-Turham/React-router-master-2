@@ -1,32 +1,42 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Vans = () => {
 	const [vans, setVans] = useState([]);
 
 	useEffect(() => {
-		async function fetchData() {
+		const fetchVans = async () => {
 			try {
-				const response = await fetch('/api/van'); // Assurez-vous que l'URL correspond à celle configurée dans votre serveur MirageJS
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				const data = await response.json();
-				console.log(data.vans);
-				setVans(data.vans);
+				const req = await axios('http://localhost:8000/vans');
+				const res = req.data;
+				setVans(res);
 			} catch (error) {
-				console.error('Error fetching data:', error);
+				console.log(error.message);
 			}
-		}
+		};
 
-		fetchData();
+		fetchVans();
 	}, []);
 
+	const vanElements = vans.map((van) => (
+		<div key={van.id} className='van-tile'>
+			<img alt={van.name} src={van.imageUrl} loading='lazy' title={van.name} />
+			<div className='van-info'>
+				<h3>{van.name}</h3>
+				<p>
+					${van.price}
+					<span>/day</span>
+				</p>
+			</div>
+			<i className={`van-type ${van.type} selected`}>{van.type}</i>
+		</div>
+	));
+
 	return (
-		<>
-			{vans.map((van) => (
-				<p key={van.id}>{van.name}</p>
-			))}
-		</>
+		<section className='van-list-container'>
+			<h1>Explore our van options</h1>
+			<div className='van-list'>{vanElements}</div>
+		</section>
 	);
 };
 export default Vans;
