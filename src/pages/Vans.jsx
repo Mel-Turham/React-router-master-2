@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Vans = () => {
 	const [vans, setVans] = useState([]);
@@ -19,17 +20,24 @@ const Vans = () => {
 	}, []);
 
 	const vanElements = vans.map((van) => (
-		<div key={van.id} className='van-tile'>
-			<img alt={van.name} src={van.imageUrl} loading='lazy' title={van.name} />
-			<div className='van-info'>
-				<h3>{van.name}</h3>
-				<p>
-					${van.price}
-					<span>/day</span>
-				</p>
+		<Link to={`/vans/${van.id}`} key={van.id}>
+			<div className='van-tile'>
+				<img
+					alt={van.name}
+					src={van.imageUrl}
+					loading='lazy'
+					title={van.name}
+				/>
+				<div className='van-info'>
+					<h3>{van.name}</h3>
+					<p>
+						${van.price}
+						<span>/day</span>
+					</p>
+				</div>
+				<i className={`van-type ${van.type} selected`}>{van.type}</i>
 			</div>
-			<i className={`van-type ${van.type} selected`}>{van.type}</i>
-		</div>
+		</Link>
 	));
 
 	return (
