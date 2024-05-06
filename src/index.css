@@ -56,6 +56,16 @@ header a {
 header a:hover {
 	color: #161616;
 	text-decoration: underline;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 3.4px;
+}
+
+a.active-link {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #161616;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 3.4px;
 }
 
 header .login-icon {
@@ -74,6 +84,14 @@ nav {
 
 main {
 	margin-bottom: 84px;
+}
+
+.active-link {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #161616;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 3.4px;
 }
 
 footer {
@@ -357,6 +375,13 @@ i[class*='van-type-'] {
 	color: #161616;
 	text-decoration: underline;
 	font-weight: 600;
+}
+
+.host-nav a.active-link {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #161616;
+	text-underline-offset: 3px;
 }
 
 .host-van-link-wrapper {

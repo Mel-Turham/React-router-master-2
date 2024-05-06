@@ -1,11 +1,39 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavHost = () => {
+	// const activeStyle = {
+	// 	fontWeight: 'bold',
+	// 	textDecoration: 'underline',
+	// 	color: 'red',
+	// };
 	return (
-    <nav className='host-nav'>
-			<Link to='/host'>Dashboard</Link>
-			<Link to='/host/reviews'>Reviews</Link>
-			<Link to='/host/income'>Income</Link>
+		<nav className='host-nav'>
+			<NavLink
+				to='/host'
+				end
+				className={({ isActive }) =>
+					isActive ? 'active-link': null
+				}
+			>
+				Dashboard
+			</NavLink>
+			<NavLink
+				to='/host/reviews'
+				className={({ isActive }) =>
+					isActive ? 'active-link': null
+				}
+			>
+				Reviews
+			</NavLink>
+
+			<NavLink
+				to='/host/income'
+				className={({ isActive }) =>
+					isActive ? 'active-link' : null
+				}
+			>
+				Income
+			</NavLink>
 		</nav>
 	);
 };
