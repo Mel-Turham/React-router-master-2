@@ -18,16 +18,16 @@ const App = () => {
 				{/* parent road nav and footer component  */}
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
-					<Route path='/about' element={<About />} />
-					<Route path='/vans' element={<Vans />} />
-					<Route path='/vans/:id' element={<VanDetail />} />
+					<Route path='about' element={<About />} />
+					<Route path='vans' element={<Vans />} />
+					<Route path='vans/:id' element={<VanDetail />} />
 
 					{/* host nesting */}
 
-					<Route path='/host' element={<HostLayout />}>
+					<Route path='host' element={<HostLayout />}>
 						<Route index element={<Dashboard />} />
-						<Route path='/host/income' element={<Income />} />
-						<Route path='/host/reviews' element={<Reviews />} />
+						<Route path='income' element={<Income />} />
+						<Route path='reviews' element={<Reviews />} />
 					</Route>
 				</Route>
 			</Routes>
