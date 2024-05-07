@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 
 const VanDetail = () => {
 	const [van, setVan] = useState(null);
 	const { id } = useParams();
-	
+	const location = useLocation();
 	useEffect(() => {
 		const vanData = async () => {
 			try {
@@ -19,8 +19,13 @@ const VanDetail = () => {
 		vanData();
 	}, [id]);
 
+	const search = location.state?.search || '';
+	const type = location.state.type;
 	return (
 		<div className='van-detail-container'>
+			<Link className='back-button' to={`..${search}`} relative='path'>
+				&#8592; <span>Back to {type ? type : 'all'} vans</span>
+			</Link>
 			{van ? (
 				<div className='van-detail'>
 					<img
@@ -35,10 +40,10 @@ const VanDetail = () => {
 						<span>${van.price}</span>/day
 					</p>
 					<p>{van.description}</p>
-					<button className='link-button'>Rent this van</button>
+					<button className='link-button'></button>
 				</div>
 			) : (
-				<h2>Loading...</h2>
+				<h1>Loading...</h1>
 			)}
 		</div>
 	);

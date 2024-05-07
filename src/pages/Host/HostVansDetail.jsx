@@ -6,6 +6,11 @@ import image from '../../assets/images/Image-not-found.png';
 const HostVansDetail = () => {
 	const { id } = useParams();
 	const [singleVan, setSingleVan] = useState(null);
+	const activeLink = {
+		textDecoration: 'underline',
+		fontWeight: 'bold',
+		color: '#161616',
+	};
 
 	useEffect(() => {
 		const fetchHostVan = async () => {
@@ -35,9 +40,7 @@ const HostVansDetail = () => {
 							title={singleVan.name}
 						/>
 						<div className='host-van-detail-info-text'>
-							<i className={`van-type ${singleVan.type}`}>
-								{singleVan.type}
-							</i>
+							<i className={`van-type ${singleVan.type}`}>{singleVan.type}</i>
 							<h3>{singleVan.name}</h3>
 							<h4>
 								${singleVan.price} <span>/day</span>
@@ -46,15 +49,26 @@ const HostVansDetail = () => {
 					</div>
 					<nav className='host-van-detail-nav'>
 						<NavLink
-							className={({ isActive }) => (isActive ? 'active-link' : null)}
-							to={`/host/vans/${id}`}
+							to='.'
+							end
+							style={({ isActive }) => (isActive ? activeLink : null)}
 						>
 							Details
 						</NavLink>
-						<NavLink to={`/host/vans/${id}/pricing`}>Pricing</NavLink>
-						<NavLink to={`/host/vans/${id}/photos`}>Photos</NavLink>
+						<NavLink
+							style={({ isActive }) => (isActive ? activeLink : null)}
+							to={`pricing`}
+						>
+							Pricing
+						</NavLink>
+						<NavLink
+							style={({ isActive }) => (isActive ? activeLink : null)}
+							to={`photos`}
+						>
+							Photos
+						</NavLink>
 					</nav>
-					<Outlet />
+					<Outlet context={{ singleVan }} />
 				</article>
 			) : (
 				<>Loading...</>

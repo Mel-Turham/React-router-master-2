@@ -467,11 +467,6 @@ i[class*='van-type-'] {
 	padding: 5px 20px;
 }
 
-.host-van-detail-nav .active-link{
-	text-decoration: underline;
-	font-weight: bold;
-	color: #161616;
-}
 
 .host-van-detail-nav a:first-of-type {
 	text-decoration: none;
