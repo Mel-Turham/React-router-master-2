@@ -1,30 +1,45 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
 import image from '../../assets/images/Image-not-found.png';
+import { useFetchDate } from '../../utils/Hooks/useFetchData';
 
 const Vans = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [vans, setVans] = useState([]);
+
 	const typeFilter = searchParams.get('type');
 
-	useEffect(() => {
-		const fetchVans = async () => {
-			try {
-				const req = await axios('/api/vans');
-				const res = req.data;
-				setVans(res);
-			} catch (error) {
-				console.log(error.message);
-			}
-		};
+	const { data, isLoading, isError } = useFetchDate('/api/vans');
 
-		fetchVans();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchVans = async () => {
+	// 		try {
+	// 			const req = await axios('/api/vans');
+	// 			const res = req.data;
+	// 			setVans(res);
+	// 		} catch (error) {
+	// 			console.log(error.message);
+	// 		}
+	// 	};
+
+	// 	fetchVans();
+	// }, []);
+
+	if (isLoading) {
+		return (
+			<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>Loading...</h1>
+		);
+	}
+
+	if (isError) {
+		return (
+			<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>
+				Error fetching data!!
+			</h1>
+		);
+	}
 
 	const vansFilter = typeFilter
-		? vans.filter((van) => van.type.toLowerCase() === typeFilter)
-		: vans;
+		? data.filter((van) => van.type.toLowerCase() === typeFilter)
+		: data;
 
 	const vanElements = vansFilter.map((van) => (
 		<Link

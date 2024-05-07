@@ -40,7 +40,7 @@ const VanDetail = () => {
 						<span>${van.price}</span>/day
 					</p>
 					<p>{van.description}</p>
-					<button className='link-button'></button>
+					<button className='link-button'>Rent this van</button>
 				</div>
 			) : (
 				<h1>Loading...</h1>
