@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink, Outlet, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import image from '../../assets/images/Image-not-found.png';
 
 const HostVansDetail = () => {
 	const { id } = useParams();
@@ -21,20 +22,20 @@ const HostVansDetail = () => {
 
 	return (
 		<section>
-			{/* <Link className='back-button ' to='/host/vans'>
+			<Link className='back-button ' to='..' relative='path'>
 				&#8592; <span>Back to all vans</span>
-			</Link> */}
+			</Link>
 			{singleVan ? (
 				<article className='host-van-detail-layout-container '>
 					<div className='host-van-detail'>
 						<img
-							src={singleVan.imageUrl}
+							src={singleVan?.imageUrl || image}
 							alt={singleVan.name}
 							loading='lazy'
 							title={singleVan.name}
 						/>
 						<div className='host-van-detail-info-text'>
-							<i className={`van-type ${singleVan.type} selected`}>
+							<i className={`van-type ${singleVan.type}`}>
 								{singleVan.type}
 							</i>
 							<h3>{singleVan.name}</h3>
@@ -43,6 +44,17 @@ const HostVansDetail = () => {
 							</h4>
 						</div>
 					</div>
+					<nav className='host-van-detail-nav'>
+						<NavLink
+							className={({ isActive }) => (isActive ? 'active-link' : null)}
+							to={`/host/vans/${id}`}
+						>
+							Details
+						</NavLink>
+						<NavLink to={`/host/vans/${id}/pricing`}>Pricing</NavLink>
+						<NavLink to={`/host/vans/${id}/photos`}>Photos</NavLink>
+					</nav>
+					<Outlet />
 				</article>
 			) : (
 				<>Loading...</>

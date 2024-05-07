@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import image from '../../assets/images/Image-not-found.png';
 
 const HostVans = () => {
 	const [hostVans, setHostVans] = useState([]);
@@ -30,7 +31,7 @@ const HostVans = () => {
 							key={hostVans.id}
 						>
 							<img
-								src={hostVans.imageUrl}
+								src={hostVans?.imageUrl || image}
 								alt={hostVans.name}
 								title={hostVans.name}
 								loading='lazy'

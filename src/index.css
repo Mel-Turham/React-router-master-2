@@ -403,6 +403,7 @@ i[class*='van-type-'] {
 	background-color: white;
 	margin-bottom: 15px;
 	padding: 18px 24px;
+	box-shadow: 0 0 90px #eeeded;
 }
 
 .host-van-single > img {
@@ -466,6 +467,12 @@ i[class*='van-type-'] {
 	padding: 5px 20px;
 }
 
+.host-van-detail-nav .active-link{
+	text-decoration: underline;
+	font-weight: bold;
+	color: #161616;
+}
+
 .host-van-detail-nav a:first-of-type {
 	text-decoration: none;
 	color: #4d4d4d;
@@ -473,6 +480,8 @@ i[class*='van-type-'] {
 	padding: 5px 15px;
 	margin-left: -15px;
 }
+
+
 
 .host-van-detail-nav a:hover {
 	color: #161616;

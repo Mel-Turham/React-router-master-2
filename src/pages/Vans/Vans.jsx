@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import image from '../../assets/images/Image-not-found.png';
 
 const Vans = () => {
 	const [vans, setVans] = useState([]);
@@ -24,7 +25,7 @@ const Vans = () => {
 			<div className='van-tile'>
 				<img
 					alt={van.name}
-					src={van.imageUrl}
+					src={van?.imageUrl || image}
 					loading='lazy'
 					title={van.name}
 				/>
