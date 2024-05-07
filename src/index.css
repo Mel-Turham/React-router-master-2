@@ -83,7 +83,7 @@ nav {
 }
 
 main {
-	margin-bottom: 35px;
+	margin-bottom: 84px;
 }
 
 .active-link {
@@ -467,7 +467,6 @@ i[class*='van-type-'] {
 	padding: 5px 20px;
 }
 
-
 .host-van-detail-nav a:first-of-type {
 	text-decoration: none;
 	color: #4d4d4d;
@@ -475,8 +474,6 @@ i[class*='van-type-'] {
 	padding: 5px 15px;
 	margin-left: -15px;
 }
-
-
 
 .host-van-detail-nav a:hover {
 	color: #161616;
