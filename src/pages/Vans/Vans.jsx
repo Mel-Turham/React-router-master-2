@@ -1,9 +1,17 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
 import image from '../../assets/images/Image-not-found.png';
 import { useFetchDate } from '../../utils/Hooks/useFetchData';
+import { getVans } from '../../utils/api/api';
+
+const loader = () => {
+	return getVans();
+};
 
 const Vans = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
+
+	const loaderData = useLoaderData();
+	console.log(loaderData);
 
 	const typeFilter = searchParams.get('type');
 
@@ -122,4 +130,6 @@ const Vans = () => {
 		</section>
 	);
 };
+
+export { loader };
 export default Vans;
