@@ -1,6 +1,6 @@
 import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
 import image from '../../assets/images/Image-not-found.png';
-import { useFetchDate } from '../../utils/Hooks/useFetchData';
+// import { useFetchDate } from '../../utils/Hooks/useFetchData';
 import { getVans } from '../../utils/api/api';
 
 const loader = () => {
@@ -10,12 +10,10 @@ const loader = () => {
 const Vans = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const loaderData = useLoaderData();
-	console.log(loaderData);
-
+	const vans = useLoaderData();
 	const typeFilter = searchParams.get('type');
 
-	const { data, isLoading, isError } = useFetchDate('/api/vans');
+	// const { data, isLoading, isError } = useFetchDate('/api/vans');
 
 	// useEffect(() => {
 	// 	const fetchVans = async () => {
@@ -31,23 +29,23 @@ const Vans = () => {
 	// 	fetchVans();
 	// }, []);
 
-	if (isLoading) {
-		return (
-			<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>Loading...</h1>
-		);
-	}
+	// if (isLoading) {
+	// 	return (
+	// 		<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>Loading...</h1>
+	// 	);
+	// }
 
-	if (isError) {
-		return (
-			<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>
-				Error fetching data!!
-			</h1>
-		);
-	}
+	// if (isError) {
+	// 	return (
+	// 		<h1 style={{ textAlign: 'center', marginTop: '2rem' }}>
+	// 			Error fetching data!!
+	// 		</h1>
+	// 	);
+	// }
 
 	const vansFilter = typeFilter
-		? data.filter((van) => van.type.toLowerCase() === typeFilter)
-		: data;
+		? vans.filter((van) => van.type.toLowerCase() === typeFilter)
+		: vans;
 
 	const vanElements = vansFilter.map((van) => (
 		<Link

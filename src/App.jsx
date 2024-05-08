@@ -22,6 +22,7 @@ import HostVansInfo from './pages/Host/HostVansInfo';
 import Pricing from './pages/Host/Pricing';
 import Photos from './pages/Host/Photos';
 import NotFound from './pages/NotFound';
+import Error from './Components/Error';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -29,7 +30,12 @@ const router = createBrowserRouter(
 		<Route path='/' element={<Layout />}>
 			<Route index element={<Home />} />
 			<Route path='about' element={<About />} />
-			<Route path='vans' element={<Vans />} loader={vansLoader} />
+			<Route
+				path='vans'
+				element={<Vans />}
+				loader={vansLoader}
+				errorElement={<Error />}
+			/>
 			<Route path='vans/:id' element={<VanDetail />} />
 
 			{/* host nesting */}

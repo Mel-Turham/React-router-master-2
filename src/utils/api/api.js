@@ -1,11 +1,8 @@
+import axios from 'axios';
+
 const getVans = async () => {
-	const res = await fetch('/api/vans');
-	if (!res.ok) {
-		throw {
-			message: 'Failed to fetch vans',
-		};
-	}
-	const data = await res.json();
+	const res = await axios('/api/van');
+	const data = await res.data;
 	return data;
 };
 
