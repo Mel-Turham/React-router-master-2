@@ -521,6 +521,9 @@ i[class*='van-type-'] {
 	align-items: center;
 	padding-inline: 27px;
 }
+.login-container h1 {
+	font-size: 1.86rem;
+}
 
 .login-form {
 	display: flex;

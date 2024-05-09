@@ -1,23 +1,32 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import image from '../../assets/images/Image-not-found.png';
+import { useLoaderData } from 'react-router-dom';
+import { getHostVans } from '../../utils/api/api';
+import { requireAuth } from '../../utils/auth/auth';
+
+export const loader = async () => {
+	await requireAuth();
+	return getHostVans();
+};
 
 const HostVans = () => {
-	const [hostVans, setHostVans] = useState([]);
+	const hostVans = useLoaderData();
+	// const [hostVans, setHostVans] = useState([]);
 
-	useEffect(() => {
-		const fetchVansHost = async () => {
-			try {
-				const req = await axios('/api/vans?_start=0&_limit=3');
-				const res = req.data;
-				setHostVans(res);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchVansHost();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchVansHost = async () => {
+	// 		try {
+	// 			const req = await axios('/api/vans?_start=0&_limit=3');
+	// 			const res = req.data;
+	// 			setHostVans(res);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	};
+	// 	fetchVansHost();
+	// }, []);
 
 	return (
 		<>

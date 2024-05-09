@@ -1,29 +1,36 @@
-import { useParams, NavLink, Outlet, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { NavLink, Outlet, Link, useLoaderData } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 import image from '../../assets/images/Image-not-found.png';
+import { getHostVans } from '../../utils/api/api';
+import { requireAuth } from '../../utils/auth/auth';
+
+export const loader = async ({ params }) => {
+	await requireAuth();
+	return getHostVans(params.id);
+};
 
 const HostVansDetail = () => {
-	const { id } = useParams();
-	const [singleVan, setSingleVan] = useState(null);
+	const singleVan = useLoaderData();
+	// const [singleVan, setSingleVan] = useState(null);
 	const activeLink = {
 		textDecoration: 'underline',
 		fontWeight: 'bold',
 		color: '#161616',
 	};
 
-	useEffect(() => {
-		const fetchHostVan = async () => {
-			try {
-				const req = await axios(`/api/vans/${id}`);
-				const res = await req.data;
-				setSingleVan(res);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchHostVan();
-	}, [id]);
+	// useEffect(() => {
+	// 	const fetchHostVan = async () => {
+	// 		try {
+	// 			const req = await axios(`/api/vans/${id}`);
+	// 			const res = await req.data;
+	// 			setSingleVan(res);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	};
+	// 	fetchHostVan();
+	// }, [id]);
 
 	return (
 		<section>

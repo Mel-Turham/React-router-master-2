@@ -1,6 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
 
-
 const Header = () => {
 	return (
 		<header>
@@ -25,6 +24,15 @@ const Header = () => {
 					className={({ isActive }) => (isActive ? 'active-link' : '')}
 				>
 					Vans
+				</NavLink>
+				<NavLink to='login'>
+					<img
+						style={{ width: '15px' }}
+						src='../../src/assets/images/avatar-icon.png'
+						alt='users'
+						title='avatar'
+						loading='lazy'
+					/>
 				</NavLink>
 			</nav>
 		</header>
